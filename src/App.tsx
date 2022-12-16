@@ -1,4 +1,4 @@
-import { Container } from '@mui/material'
+import { Container, ThemeProvider, createTheme } from '@mui/material'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -12,6 +12,8 @@ import Home from './components/Home'
 import Login from './components/Login'
 import { useState } from 'react';
 
+const theme = createTheme();
+
 const App = () => {
   const [currentPage, setCurrentPage] = useState("home")
   const navigate = useNavigate();
@@ -23,21 +25,20 @@ const App = () => {
   };
 
   return (
-    <Container maxWidth="md">
-      <Box>
-        <Stack spacing={2} direction="row">
-          <Button variant={currentPage === "home" ? "contained" : "outlined"} onClick={() => handleClick('home')}>Home</Button>
-          <Button variant={currentPage === "admin" ? "contained" : "outlined"} onClick={() => handleClick('admin')}>Admin</Button>
-          <Button variant={currentPage === "login" ? "contained" : "outlined"} onClick={() => handleClick('login')}>Login</Button>
-        </Stack>
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </Box>
-    </Container>
-
+    <ThemeProvider theme={theme}>
+      <Container maxWidth="md">
+          <Stack spacing={2} direction="row">
+            <Button variant={currentPage === "home" ? "contained" : "outlined"} onClick={() => handleClick('home')}>Home</Button>
+            <Button variant={currentPage === "admin" ? "contained" : "outlined"} onClick={() => handleClick('admin')}>Admin</Button>
+            <Button variant={currentPage === "login" ? "contained" : "outlined"} onClick={() => handleClick('login')}>Login</Button>
+          </Stack>
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+      </Container>
+    </ThemeProvider>
   )
 }
 

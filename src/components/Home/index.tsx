@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
-import { Container } from '@mui/material'
+import React from 'react'
+import { Box, Typography } from '@mui/material'
 
 
 const Home: React.FunctionComponent = ():JSX.Element => {
     return <React.Fragment>
-        <Container style={{padding:"5px 0"}}>
-            
-        </Container>
+        <Box paddingTop={2}>
+            <Typography component="h1" variant="h4">
+            Welcome to a demo of React Global State
+            </Typography>
+        </Box>
     </React.Fragment>
 }
 
-export default Home
+export default Home 
